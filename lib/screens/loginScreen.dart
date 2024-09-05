@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'signUp.dart';
 import 'UserHomeScreen.dart';
+import 'ForgotPasswordScreen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -15,7 +16,7 @@ class LoginScreen extends StatelessWidget {
             Navigator.pop(context); // Back button functionality
           },
         ),
-        backgroundColor: Colors.white,
+        // backgroundColor: Colors.white,
         elevation: 0,
       ),
       body: Padding(
@@ -62,6 +63,7 @@ class LoginScreen extends StatelessWidget {
               child: TextButton(
                 onPressed: () {
                   // Forgot Password logic here
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const ForgotPasswordScreen()),);
                 },
                 child: const Text('Forgot Password?'),
               ),

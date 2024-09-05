@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'verification.dart'; // Import the VerificationScreen
+import 'verification.dart';
+import 'loginScreen.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -9,11 +10,11 @@ class SignUpScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 20),
+              const SizedBox(height: 0),
               IconButton(
                 icon: const Icon(Icons.arrow_back),
                 onPressed: () {
@@ -97,6 +98,12 @@ class SignUpScreen extends StatelessWidget {
                 child: TextButton(
                   onPressed: () {
                     // Navigate to login screen
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginScreen(),
+                      ),
+                    );
                   },
                   child: const Text.rich(
                     TextSpan(

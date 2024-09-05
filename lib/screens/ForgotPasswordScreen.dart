@@ -1,20 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(ForgotPasswordApp());
-}
-
-class ForgotPasswordApp extends StatelessWidget {
-  const ForgotPasswordApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: ForgotPasswordScreen(),
-    );
-  }
-}
-
 class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({super.key});
 
@@ -28,7 +13,7 @@ class ForgotPasswordScreen extends StatelessWidget {
           icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             // Handle back action
-            // Navigator.pop(context);
+            Navigator.pop(context);
           },
         ),
       ),
@@ -58,7 +43,7 @@ class ForgotPasswordScreen extends StatelessWidget {
             ),
             const SizedBox(height: 32),
             const Text(
-              'Gmail ID',
+              'Email ID',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
@@ -83,9 +68,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                   // Handle send button press
                 },
                 style: ElevatedButton.styleFrom(
-                  // primary: Colors.lightBlue[100],
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 100, vertical: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 20),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0),
                   ),
@@ -106,12 +89,3 @@ class ForgotPasswordScreen extends StatelessWidget {
     );
   }
 }
-
-
-// Inside your login screen:
-// ElevatedButton(
-//   onPressed: () {
-//     Navigator.pushNamed(context, '/forgot-password');
-//   },
-//   child: Text('Forgot Password'),
-// ),

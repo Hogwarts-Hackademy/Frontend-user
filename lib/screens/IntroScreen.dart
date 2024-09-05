@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'signUp.dart'; // Import the SignUpScreen
+import 'loginScreen.dart';
 
 class IntroScreen extends StatelessWidget {
   const IntroScreen({super.key});
@@ -53,7 +53,7 @@ class IntroScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const SignUpScreen()),
+                        builder: (context) => const LoginScreen()),
                   );
                 },
                 backgroundColor: Colors.lightBlue,
