@@ -17,7 +17,7 @@ class UserHomeScreen extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(15),
                   decoration: BoxDecoration(
-                    color: Colors.lightBlue, // Background color for the box
+                    color: const Color(0xFFF5F5F5), // Background color for the box
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Column(
