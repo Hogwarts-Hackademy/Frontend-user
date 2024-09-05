@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'UserHomeScreen.dart'; // Import your user home screen
 
 class VerificationScreen extends StatelessWidget {
-  const VerificationScreen({Key? key}) : super(key: key);
+  const VerificationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -115,12 +115,12 @@ class VerificationScreen extends StatelessWidget {
         border: Border.all(color: Colors.grey),
         borderRadius: BorderRadius.circular(8),
       ),
-      child: TextField(
+      child: const TextField(
         textAlign: TextAlign.center,
-        style: const TextStyle(fontSize: 24),
+        style: TextStyle(fontSize: 24),
         keyboardType: TextInputType.number,
         maxLength: 1,
-        decoration: const InputDecoration(
+        decoration: InputDecoration(
           border: InputBorder.none,
           counterText: '',
         ),

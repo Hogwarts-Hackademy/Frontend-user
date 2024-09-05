@@ -5,6 +5,8 @@ void main() {
 }
 
 class ForgotPasswordApp extends StatelessWidget {
+  const ForgotPasswordApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,6 +16,8 @@ class ForgotPasswordApp extends StatelessWidget {
 }
 
 class ForgotPasswordScreen extends StatelessWidget {
+  const ForgotPasswordScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +25,7 @@ class ForgotPasswordScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             // Handle back action
             // Navigator.pop(context);
@@ -33,8 +37,8 @@ class ForgotPasswordScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
               'FORGOT PASSWORD',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -43,8 +47,8 @@ class ForgotPasswordScreen extends StatelessWidget {
                 letterSpacing: 1.5,
               ),
             ),
-            SizedBox(height: 16),
-            Text(
+            const SizedBox(height: 16),
+            const Text(
               'Please Enter Your Registered Mobile Number to Receive a Verification Code',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -52,15 +56,15 @@ class ForgotPasswordScreen extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            SizedBox(height: 32),
-            Text(
+            const SizedBox(height: 32),
+            const Text(
               'Gmail ID',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             TextField(
               decoration: InputDecoration(
                 filled: true,
@@ -70,9 +74,9 @@ class ForgotPasswordScreen extends StatelessWidget {
                   borderSide: BorderSide.none,
                 ),
               ),
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             Center(
               child: ElevatedButton(
                 onPressed: () {
@@ -80,12 +84,13 @@ class ForgotPasswordScreen extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                   // primary: Colors.lightBlue[100],
-                  padding: EdgeInsets.symmetric(horizontal: 100, vertical: 20),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 100, vertical: 20),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0),
                   ),
                 ),
-                child: Text(
+                child: const Text(
                   'SEND',
                   style: TextStyle(
                     fontSize: 16,
