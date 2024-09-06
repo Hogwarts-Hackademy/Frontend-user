@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_svg: ^1.0.3
 
 dev_dependencies:
   flutter_test:
@@ -17,3 +18,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - lib/assets/images/introscreen.png
+    - lib/assets/images/home.png
+    - lib/assets/images/user.png
+
