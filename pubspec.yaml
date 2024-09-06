@@ -22,4 +22,5 @@ flutter:
     - lib/assets/images/introscreen.png
     - lib/assets/images/home.png
     - lib/assets/images/user.png
-
+    - lib/assets/images/doctor.png
+    - lib/assets/images/hospital_icon.png

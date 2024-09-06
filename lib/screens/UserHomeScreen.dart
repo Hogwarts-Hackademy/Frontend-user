@@ -17,7 +17,7 @@ class UserHomeScreen extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(15),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFF5F5F5), // Background color for the box
+                    color: const Color(0xFFF5F5F5),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Column(
@@ -50,8 +50,7 @@ class UserHomeScreen extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 10, vertical: 5),
                         decoration: BoxDecoration(
-                          color: Colors.blue
-                              .shade100, // Background color for the search box
+                          color: Colors.blue.shade100,
                           borderRadius: BorderRadius.circular(25),
                         ),
                         child: const Row(
@@ -71,52 +70,9 @@ class UserHomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                // End of the new container
                 const SizedBox(height: 20),
                 const Text(
-                  'Doctors',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Container(
-                  padding: const EdgeInsets.all(15),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade200,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        'lib/assets/images/home.png',
-                        width: 80,
-                        height: 80,
-                      ),
-                      const SizedBox(width: 10),
-                      const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Heart Specialist',
-                            style: TextStyle(
-                              color: Colors.red,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            'Dr. Alexa Sharma',
-                            style: TextStyle(fontSize: 16),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 20),
-                const Text(
-                  'More Service',
+                  'Service',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -129,12 +85,14 @@ class UserHomeScreen extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   childAspectRatio: 1.5,
                   children: [
-                    _buildServiceCard('Insurance'),
-                    _buildServiceCard('Ambulance'),
-                    _buildServiceCard('Bed Status'),
-                    _buildServiceCard('Schemes'),
-                    _buildServiceCard('Abha Card'),
-                    _buildServiceCard('Appointment'),
+                    _buildServiceCard(context, 'Doctors'),
+                    _buildServiceCard(context, 'Hospitals'),
+                    _buildServiceCard(context, 'Medical Report'),
+                    _buildServiceCard(context, 'Volunteer'),
+                    _buildServiceCard(context, 'Abha Card'),
+                    _buildServiceCard(context, 'Ambulance'),
+                    _buildServiceCard(context, 'Insurance'),
+                    _buildServiceCard(context, 'Schemes'),
                   ],
                 ),
               ],
@@ -152,23 +110,239 @@ class UserHomeScreen extends StatelessWidget {
             icon: Icon(Icons.phone),
             label: 'Emergency',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.medical_services),
-            label: 'Medical Records',
-          ),
         ],
       ),
     );
   }
 
-  Widget _buildServiceCard(String title) {
-    return Card(
-      elevation: 2,
-      child: Center(
-        child: Text(
-          title,
-          textAlign: TextAlign.center,
+  Widget _buildServiceCard(BuildContext context, String title) {
+    return GestureDetector(
+      onTap: () {
+        if (title == 'Doctors') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const DoctorsListScreen()),
+          );
+        } else if (title == 'Hospitals') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const HospitalSearchScreen()),
+          );
+        }
+      },
+      child: Card(
+        elevation: 2,
+        child: Center(
+          child: Text(
+            title,
+            textAlign: TextAlign.center,
+          ),
         ),
+      ),
+    );
+  }
+}
+
+class DoctorsListScreen extends StatelessWidget {
+  const DoctorsListScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Doctors'),
+        backgroundColor: Colors.blue.shade100,
+      ),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(25),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.2),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                    ),
+                  ],
+                ),
+                child: const Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Search....',
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                    Icon(Icons.search),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: 4,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      margin: const EdgeInsets.symmetric(vertical: 10),
+                      child: ListTile(
+                        leading: const CircleAvatar(
+                          backgroundImage: AssetImage(
+                              'lib/assets/images/doctor.png'), // Replace with your doctor image
+                        ),
+                        title: const Text('Dr. Alexa Sharma'),
+                        subtitle: Text([
+                          'Neurologist',
+                          'Cardiologist',
+                          'Physiotherapist',
+                          'Orthologist'
+                        ][index]),
+                        trailing: IconButton(
+                          icon: const Icon(Icons.favorite_border),
+                          onPressed: () {},
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.phone),
+            label: 'Emergency',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class HospitalSearchScreen extends StatelessWidget {
+  const HospitalSearchScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final List<Map<String, String>> hospitals = [
+      {
+        'name': 'Indraprastha Apollo Hospitals',
+        'location': 'New Delhi, Delhi',
+        'phone': '011 7179 1090'
+      },
+      {
+        'name': 'AIG Hospitals',
+        'location': 'Hyderabad, Telangana',
+        'phone': '040 4244 4222'
+      },
+      {
+        'name': 'Parul Sevashram Hospital',
+        'location': 'Vadodara, Gujarat',
+        'phone': '1800 889 9774'
+      },
+      {
+        'name': 'Geetanjali Hospital',
+        'location': 'Eklingpura, Rajasthan',
+        'phone': '0294 250 0006'
+      },
+    ];
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Hospitals'),
+        backgroundColor: Colors.blue.shade100,
+      ),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(25),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.2),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                    ),
+                  ],
+                ),
+                child: const Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Search...',
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                    Icon(Icons.search),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: hospitals.length,
+                  itemBuilder: (context, index) {
+                    final hospital = hospitals[index];
+                    return Card(
+                      margin: const EdgeInsets.symmetric(vertical: 10),
+                      child: ListTile(
+                        leading: const CircleAvatar(
+                          backgroundImage: AssetImage(
+                              'lib/assets/images/hospital_icon.png'), // Replace with your hospital icon
+                        ),
+                        title: Text(hospital['name']!),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(hospital['location']!),
+                            Text(hospital['phone']!),
+                          ],
+                        ),
+                        trailing: const Icon(Icons.arrow_forward_ios),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.phone),
+            label: 'Emergency',
+          ),
+        ],
       ),
     );
   }

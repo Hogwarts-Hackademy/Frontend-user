@@ -64,14 +64,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 7),
+                const SizedBox(height: 5),
                 IconButton(
                   icon: const Icon(Icons.arrow_back),
                   onPressed: () {
                     Navigator.pop(context);
                   },
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 const Center(
                   child: Text(
                     'SIGNUP',
@@ -81,21 +81,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 const TextField(
                   decoration: InputDecoration(
                     labelText: 'First Name',
                     prefixIcon: Icon(Icons.person),
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 const TextField(
                   decoration: InputDecoration(
                     labelText: 'Last Name',
                     prefixIcon: Icon(Icons.person_outline),
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 TextFormField(
                   controller: _emailController,
                   decoration: const InputDecoration(
@@ -104,7 +104,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   validator: _validateEmail,
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 TextFormField(
                   controller: _passwordController,
                   obscureText: !_passwordVisible,
@@ -126,7 +126,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   validator: _validatePassword,
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 TextFormField(
                   controller: _confirmPasswordController,
                   obscureText: !_confirmPasswordVisible,
