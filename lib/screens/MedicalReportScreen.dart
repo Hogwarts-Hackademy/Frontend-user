@@ -28,11 +28,13 @@ class MedicalReportScreen extends StatelessWidget {
     },
   ];
 
+  MedicalReportScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Medical Report'),
+        title: const Text('Medical Report'),
         backgroundColor: Colors.purple[300],
       ),
       body: ListView.builder(

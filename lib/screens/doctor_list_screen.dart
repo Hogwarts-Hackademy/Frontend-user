@@ -17,6 +17,8 @@ class DoctorListScreen extends StatelessWidget {
     Doctor(name: 'Dr. Alexa Sharma', specialty: 'Orthologist'),
   ];
 
+  DoctorListScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,7 +75,7 @@ class DoctorListScreen extends StatelessWidget {
 class DoctorTile extends StatelessWidget {
   final Doctor doctor;
 
-  const DoctorTile({required this.doctor});
+  const DoctorTile({super.key, required this.doctor});
 
   @override
   Widget build(BuildContext context) {

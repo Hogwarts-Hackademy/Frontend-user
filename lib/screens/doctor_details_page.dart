@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 
 class DoctorDetailsPage1 extends StatelessWidget {
+  const DoctorDetailsPage1({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           }, // Implement navigation back
         ),
-        title: Text('Doctor\'s Details', style: TextStyle(color: Colors.black)),
+        title: const Text('Doctor\'s Details',
+            style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
         elevation: 0,
       ),
@@ -49,12 +52,12 @@ class DoctorDetailsPage1 extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
               'DATE',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -65,12 +68,12 @@ class DoctorDetailsPage1 extends StatelessWidget {
                 DateCard(day: '23', weekday: 'Wed'),
               ],
             ),
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
               'TIME',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             GridView.count(
               shrinkWrap: true,
               crossAxisCount: 3,
@@ -86,7 +89,7 @@ class DoctorDetailsPage1 extends StatelessWidget {
                 TimeSlotCard(time: '12:00 PM'),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             Center(
               child: ElevatedButton(
                 onPressed: () {
@@ -97,13 +100,14 @@ class DoctorDetailsPage1 extends StatelessWidget {
                         builder: (context) => DoctorDetailsPage()),
                   );
                 },
-                child: Text('DONE'),
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0),
                   ),
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 ),
+                child: Text('DONE'),
               ),
             ),
           ],
@@ -115,15 +119,17 @@ class DoctorDetailsPage1 extends StatelessWidget {
 
 // DoctorDetailsPage from the previous code
 class DoctorDetailsPage extends StatelessWidget {
+  const DoctorDetailsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('Appoint Time'),
+        title: const Text('Appoint Time'),
         actions: [
           IconButton(
-            icon: Icon(Icons.code),
+            icon: const Icon(Icons.code),
             onPressed: () {},
           ),
         ],
@@ -165,7 +171,7 @@ class DoctorDetailsPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
 
             // Date and Time
             Row(
@@ -173,40 +179,40 @@ class DoctorDetailsPage extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Text('DATE'),
+                    const Text('DATE'),
                     Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 8),
                       decoration: BoxDecoration(
                         color: Colors.grey[200],
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Text('19 Sat August'),
+                      child: const Text('19 Sat August'),
                     ),
                   ],
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 Column(
                   children: [
-                    Text('TIME'),
+                    const Text('TIME'),
                     Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 8),
                       decoration: BoxDecoration(
                         color: Colors.grey[200],
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Text('11:00 AM'),
+                      child: const Text('11:00 AM'),
                     ),
                   ],
                 ),
               ],
             ),
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
 
             // Booking Confirmation
             Container(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: Colors.grey[200],
                 borderRadius: BorderRadius.circular(15),
@@ -234,7 +240,7 @@ class DoctorDetailsPage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
 
             // Done Button
             ElevatedButton(
@@ -242,14 +248,16 @@ class DoctorDetailsPage extends StatelessWidget {
                 Navigator.pop(context); // Navigate back to the previous page
               },
               style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.blue, backgroundColor: Colors.white,
-                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                foregroundColor: Colors.blue,
+                backgroundColor: Colors.white,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
-                  side: BorderSide(color: Colors.blue),
+                  side: const BorderSide(color: Colors.blue),
                 ),
               ),
-              child: Text(
+              child: const Text(
                 'DONE',
                 style: TextStyle(fontSize: 16),
               ),
@@ -265,13 +273,13 @@ class DateCard extends StatelessWidget {
   final String day;
   final String weekday;
 
-  const DateCard({required this.day, required this.weekday});
+  const DateCard({super.key, required this.day, required this.weekday});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 60,
-      padding: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
       decoration: BoxDecoration(
         color: Colors.grey[200],
         borderRadius: BorderRadius.circular(10),
@@ -282,12 +290,12 @@ class DateCard extends StatelessWidget {
         children: [
           Text(
             day,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Text(
             weekday,
-            style: TextStyle(fontSize: 12, color: Colors.grey),
+            style: const TextStyle(fontSize: 12, color: Colors.grey),
           ),
         ],
       ),
@@ -298,13 +306,13 @@ class DateCard extends StatelessWidget {
 class TimeSlotCard extends StatelessWidget {
   final String time;
 
-  const TimeSlotCard({required this.time});
+  const TimeSlotCard({super.key, required this.time});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: Colors.grey[200],
         borderRadius: BorderRadius.circular(10),
@@ -312,7 +320,7 @@ class TimeSlotCard extends StatelessWidget {
       ),
       child: Text(
         time,
-        style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
       ),
     );
   }

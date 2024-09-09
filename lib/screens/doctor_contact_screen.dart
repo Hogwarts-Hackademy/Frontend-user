@@ -6,21 +6,21 @@ import 'doctor_details_page.dart'; // Import the DoctorDetailsPage class
 class DoctorContactScreen extends StatelessWidget {
   final Doctor doctor;
 
-  const DoctorContactScreen({required this.doctor});
+  const DoctorContactScreen({super.key, required this.doctor});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text("DOCTOR PROFILE"),
+        title: const Text("DOCTOR PROFILE"),
         centerTitle: true,
       ),
       body: Column(
         children: [
           // Profile Section
           Container(
-            padding: EdgeInsets.symmetric(vertical: 20.0),
+            padding: const EdgeInsets.symmetric(vertical: 20.0),
             color: Colors.lightBlue[100],
             child: Column(
               children: [
@@ -29,7 +29,7 @@ class DoctorContactScreen extends StatelessWidget {
                   backgroundImage: AssetImage(
                       'lib/assets/images/doctor.png'), // Doctor image
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
                   doctor.name, // Doctor's name
                   style: const TextStyle(
@@ -44,7 +44,7 @@ class DoctorContactScreen extends StatelessWidget {
                     color: Colors.black54,
                   ),
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -65,7 +65,7 @@ class DoctorContactScreen extends StatelessWidget {
 
           // Contact Details Section
           Container(
-            padding: EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(20.0),
             child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -95,7 +95,7 @@ class DoctorContactScreen extends StatelessWidget {
             ),
           ),
 
-          Spacer(), // Spacer to push the button to the bottom
+          const Spacer(), // Spacer to push the button to the bottom
 
           // Book Appointment Button
           Padding(

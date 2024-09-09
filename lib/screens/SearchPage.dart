@@ -10,12 +10,14 @@ class Doctor {
 }
 
 class SearchPage extends StatefulWidget {
+  const SearchPage({super.key});
+
   @override
   _SearchPageState createState() => _SearchPageState();
 }
 
 class _SearchPageState extends State<SearchPage> {
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
   List<Doctor> doctors = [
     Doctor(
         name: 'Dr. Alexa Sharma',
@@ -56,13 +58,13 @@ class _SearchPageState extends State<SearchPage> {
     } else {
       // Filter the doctor list based on the query
       List<Doctor> tempList = [];
-      doctors.forEach((doctor) {
+      for (var doctor in doctors) {
         if (doctor.name.toLowerCase().contains(query.toLowerCase()) ||
             doctor.specialty.toLowerCase().contains(query.toLowerCase()) ||
             doctor.hospital.toLowerCase().contains(query.toLowerCase())) {
           tempList.add(doctor);
         }
-      });
+      }
 
       // Update the filtered list
       setState(() {
@@ -81,7 +83,7 @@ class _SearchPageState extends State<SearchPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Search Doctors"),
+        title: const Text("Search Doctors"),
       ),
       body: Column(
         children: <Widget>[
@@ -101,12 +103,13 @@ class _SearchPageState extends State<SearchPage> {
           ),
           Expanded(
             child: _searchController.text.isEmpty
-                ? Center(child: Text("No results found"))
+                ? const Center(child: Text("No results found"))
                 : ListView.builder(
                     itemCount: filteredDoctors.length,
                     itemBuilder: (context, index) {
                       return ListTile(
-                        title: Text("${filteredDoctors[index].name} - ${filteredDoctors[index].specialty}"),
+                        title: Text(
+                            "${filteredDoctors[index].name} - ${filteredDoctors[index].specialty}"),
                         subtitle: Text(filteredDoctors[index].hospital),
                         leading: const CircleAvatar(
                           child: Icon(Icons.person),

@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
 class BookingStatus extends StatelessWidget {
+  const BookingStatus({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('Appoint Time'),
+        title: const Text('Appoint Time'),
         actions: [
           IconButton(
-            icon: Icon(Icons.code),
+            icon: const Icon(Icons.code),
             onPressed: () {},
           ),
         ],
@@ -20,7 +22,7 @@ class BookingStatus extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // Doctor's Info
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 CircleAvatar(
@@ -51,7 +53,7 @@ class BookingStatus extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
 
             // Date and Time
             Row(
@@ -59,45 +61,45 @@ class BookingStatus extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Text('DATE'),
+                    const Text('DATE'),
                     Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 8),
                       decoration: BoxDecoration(
                         color: Colors.grey[200],
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Text('19 Sat August'),
+                      child: const Text('19 Sat August'),
                     ),
                   ],
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 Column(
                   children: [
-                    Text('TIME'),
+                    const Text('TIME'),
                     Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 8),
                       decoration: BoxDecoration(
                         color: Colors.grey[200],
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Text('11:00 AM'),
+                      child: const Text('11:00 AM'),
                     ),
                   ],
                 ),
               ],
             ),
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
 
             // Booking Confirmation
             Container(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: Colors.grey[200],
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Column(
+              child: const Column(
                 children: [
                   Icon(Icons.check_circle_outline,
                       size: 50, color: Colors.blue),
@@ -120,20 +122,22 @@ class BookingStatus extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
 
             // Done Button
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.blue, backgroundColor: Colors.white,
-                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                foregroundColor: Colors.blue,
+                backgroundColor: Colors.white,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
-                  side: BorderSide(color: Colors.blue),
+                  side: const BorderSide(color: Colors.blue),
                 ),
               ),
-              child: Text(
+              child: const Text(
                 'DONE',
                 style: TextStyle(fontSize: 16),
               ),

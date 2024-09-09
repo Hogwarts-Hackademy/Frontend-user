@@ -24,11 +24,13 @@ class HospitalListScreen extends StatelessWidget {
     },
   ];
 
+  HospitalListScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hospitals'),
+        title: const Text('Hospitals'),
         centerTitle: true,
         backgroundColor: Colors.lightBlue,
         elevation: 0,
@@ -57,7 +59,8 @@ class HospitalListScreen extends StatelessWidget {
                 final hospital = hospitals[index];
                 return ListTile(
                   leading: const CircleAvatar(
-                    backgroundImage: AssetImage('lib/assets/images/hospital_icon.png'),
+                    backgroundImage:
+                        AssetImage('lib/assets/images/hospital_icon.png'),
                   ),
                   title: Text(hospital['name']!),
                   subtitle: Column(
@@ -104,7 +107,7 @@ class HospitalListScreen extends StatelessWidget {
 class DoctorListScreen extends StatelessWidget {
   final String hospitalName;
 
-  DoctorListScreen({required this.hospitalName});
+  DoctorListScreen({super.key, required this.hospitalName});
 
   final List<Doctor> doctors = [
     Doctor(name: 'Dr. Alexa Sharma', specialty: 'Neurologist'),
@@ -127,7 +130,7 @@ class DoctorListScreen extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                 hintText: 'Search...',
-                prefixIcon: Icon(Icons.search),
+                prefixIcon: const Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
@@ -151,7 +154,7 @@ class DoctorListScreen extends StatelessWidget {
 class DoctorTile extends StatelessWidget {
   final Doctor doctor;
 
-  const DoctorTile({required this.doctor});
+  const DoctorTile({super.key, required this.doctor});
 
   @override
   Widget build(BuildContext context) {
