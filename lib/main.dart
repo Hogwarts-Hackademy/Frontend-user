@@ -13,10 +13,9 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       title: 'Health App',
       theme: ThemeData(
-        primarySwatch: Colors.lightBlue   ,
+        primarySwatch: Colors.lightBlue,
       ),
       home: const IntroScreen(),
-
-    );  
+    );
   }
 }
