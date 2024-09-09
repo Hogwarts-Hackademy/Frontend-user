@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'doctor_list_screen.dart';
+import 'hospital_search_screen.dart';
+import 'Setting.dart';
+import 'SearchPage.dart';
+import 'MedicalReportScreen.dart'; // Import the medical report screen
 
 class UserHomeScreen extends StatelessWidget {
   const UserHomeScreen({super.key});
@@ -17,15 +22,15 @@ class UserHomeScreen extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(15),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFF5F5F5), // Background color for the box
+                    color: const Color(0xFFF5F5F5),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Column(
                     children: [
-                      const Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             'Good Morning!\nJack',
                             style: TextStyle(
                               fontSize: 20,
@@ -34,89 +39,60 @@ class UserHomeScreen extends StatelessWidget {
                           ),
                           Row(
                             children: [
-                              CircleAvatar(
-                                backgroundImage:
-                                    AssetImage('lib/assets/images/user.png'),
-                                radius: 20,
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const SettingsPage(),
+                                    ),
+                                  );
+                                },
+                                child: const Icon(Icons.settings, size: 28),
                               ),
-                              SizedBox(width: 10),
-                              Icon(Icons.notifications, size: 28),
+                              const SizedBox(width: 10),
+                              const Icon(Icons.notifications, size: 28),
                             ],
                           ),
                         ],
                       ),
                       const SizedBox(height: 20),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 5),
-                        decoration: BoxDecoration(
-                          color: Colors.blue
-                              .shade100, // Background color for the search box
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                        child: const Row(
-                          children: [
-                            Expanded(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  hintText: 'Search...',
-                                  border: InputBorder.none,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SearchPage(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 5),
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 255, 255, 255),
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                          child: const Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  'Search...',
+                                  style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                                 ),
                               ),
-                            ),
-                            Icon(Icons.search, size: 28),
-                          ],
+                              Icon(Icons.search, size: 28),
+                            ],
+                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
-                // End of the new container
                 const SizedBox(height: 20),
                 const Text(
-                  'Doctors',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Container(
-                  padding: const EdgeInsets.all(15),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade200,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        'lib/assets/images/home.png',
-                        width: 80,
-                        height: 80,
-                      ),
-                      const SizedBox(width: 10),
-                      const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Heart Specialist',
-                            style: TextStyle(
-                              color: Colors.red,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            'Dr. Alexa Sharma',
-                            style: TextStyle(fontSize: 16),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 20),
-                const Text(
-                  'More Service',
+                  'Service',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -129,12 +105,14 @@ class UserHomeScreen extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   childAspectRatio: 1.5,
                   children: [
-                    _buildServiceCard('Insurance'),
-                    _buildServiceCard('Ambulance'),
-                    _buildServiceCard('Bed Status'),
-                    _buildServiceCard('Schemes'),
-                    _buildServiceCard('Abha Card'),
-                    _buildServiceCard('Appointment'),
+                    _buildServiceCard(context, 'Doctors'),
+                    _buildServiceCard(context, 'Hospitals'),
+                    _buildServiceCard(context, 'Medical Report'),
+                    _buildServiceCard(context, 'Volunteer'),
+                    _buildServiceCard(context, 'Abha Card'),
+                    _buildServiceCard(context, 'Ambulance'),
+                    _buildServiceCard(context, 'Insurance'),
+                    _buildServiceCard(context, 'Schemes'),
                   ],
                 ),
               ],
@@ -152,22 +130,39 @@ class UserHomeScreen extends StatelessWidget {
             icon: Icon(Icons.phone),
             label: 'Emergency',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.medical_services),
-            label: 'Medical Records',
-          ),
         ],
       ),
     );
   }
 
-  Widget _buildServiceCard(String title) {
-    return Card(
-      elevation: 2,
-      child: Center(
-        child: Text(
-          title,
-          textAlign: TextAlign.center,
+  Widget _buildServiceCard(BuildContext context, String title) {
+    return GestureDetector(
+      onTap: () {
+        if (title == 'Doctors') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => DoctorListScreen()),
+          );
+        } else if (title == 'Hospitals') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const HospitalSearchScreen()),
+          );
+        } else if (title == 'Medical Report') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => MedicalReportScreen()),
+          );
+        }
+      },
+      child: Card(
+        elevation: 2,
+        child: Center(
+          child: Text(
+            title,
+            textAlign: TextAlign.center,
+          ),
         ),
       ),
     );
