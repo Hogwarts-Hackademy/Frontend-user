@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:health_sync/config/login_API.dart';
 import 'signupScreen.dart';
 import 'UserHomeScreen.dart';
 import 'ForgotPasswordScreen.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -31,6 +34,32 @@ class _LoginScreenState extends State<LoginScreen> {
       return 'Password is required';
     }
     return null;
+  }
+
+  Future<void> _login() async {
+    if (_formKey.currentState!.validate()) {
+      final response = await http.post(
+        Uri.parse(loginApi.loginUrl), // Using the API constant
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode({
+          "email": _emailController.text,
+          "password": _passwordController.text,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        // Navigate to the UserHomeScreen if login is successful
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const UserHomeScreen()),
+        );
+      } else {
+        // Handle error (e.g., invalid credentials)
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Login failed. Please try again.')),
+        );
+      }
+    }
   }
 
   @override
@@ -107,7 +136,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 alignment: Alignment.centerRight,
                 child: TextButton(
                   onPressed: () {
-                    // Forgot Password logic
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -121,16 +149,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 16),
               // Login button
               ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    // Add login logic here
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const UserHomeScreen()),
-                    );
-                  }
-                },
+                onPressed: _login, // Call the login function
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue[300],
                   minimumSize: const Size.fromHeight(50),
@@ -156,7 +175,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   const Text("Don’t have an account?"),
                   TextButton(
                     onPressed: () {
-                      // Navigate to SignUp screen
                       Navigator.push(
                         context,
                         MaterialPageRoute(

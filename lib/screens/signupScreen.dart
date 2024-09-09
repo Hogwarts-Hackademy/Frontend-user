@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:health_sync/config/login_API.dart';
 import 'verification.dart';
 import 'loginScreen.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -14,6 +17,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
+  final _firstNameController = TextEditingController();
+  final _lastNameController = TextEditingController();
   bool _passwordVisible = false;
   bool _confirmPasswordVisible = false;
 
@@ -45,11 +50,44 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return null;
   }
 
+  Future<void> _register() async {
+    if (_formKey.currentState!.validate()) {
+      final response = await http.post(
+        Uri.parse(loginApi.registerUrl), // API constant for registration
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode({
+          "email": _emailController.text,
+          "password": _passwordController.text,
+          "firstName": _firstNameController.text,
+          "lastName": _lastNameController.text,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        // Navigate to VerificationScreen if registration is successful
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const VerificationScreen(),
+          ),
+        );
+      } else {
+        // Handle registration error
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content: Text('Registration failed. Please try again.')),
+        );
+      }
+    }
+  }
+
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
     _confirmPasswordController.dispose();
+    _firstNameController.dispose();
+    _lastNameController.dispose();
     super.dispose();
   }
 
@@ -82,20 +120,37 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                const TextField(
-                  decoration: InputDecoration(
+                // First Name Input
+                TextFormField(
+                  controller: _firstNameController,
+                  decoration: const InputDecoration(
                     labelText: 'First Name',
                     prefixIcon: Icon(Icons.person),
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'First name is required';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 10),
-                const TextField(
-                  decoration: InputDecoration(
+                // Last Name Input
+                TextFormField(
+                  controller: _lastNameController,
+                  decoration: const InputDecoration(
                     labelText: 'Last Name',
                     prefixIcon: Icon(Icons.person_outline),
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Last name is required';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 10),
+                // Email Input
                 TextFormField(
                   controller: _emailController,
                   decoration: const InputDecoration(
@@ -105,6 +160,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   validator: _validateEmail,
                 ),
                 const SizedBox(height: 10),
+                // Password Input
                 TextFormField(
                   controller: _passwordController,
                   obscureText: !_passwordVisible,
@@ -127,6 +183,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   validator: _validatePassword,
                 ),
                 const SizedBox(height: 10),
+                // Confirm Password Input
                 TextFormField(
                   controller: _confirmPasswordController,
                   obscureText: !_confirmPasswordVisible,
@@ -149,19 +206,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   validator: _validateConfirmPassword,
                 ),
                 const SizedBox(height: 40),
+                // Register Button
                 Center(
                   child: ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        // Navigate to VerificationScreen
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const VerificationScreen(),
-                          ),
-                        );
-                      }
-                    },
+                    onPressed: _register, // Call the registration function
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue[300],
                       minimumSize: const Size(330, 50),
