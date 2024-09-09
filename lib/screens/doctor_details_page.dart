@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
-class DoctorDetailsPage extends StatelessWidget {
+class DoctorDetailsPage1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {}, // Implement navigation back
+          onPressed: () {
+            Navigator.pop(context);
+          }, // Implement navigation back
         ),
         title: Text('Doctor\'s Details', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
@@ -18,7 +20,7 @@ class DoctorDetailsPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
+            const Row(
               children: [
                 CircleAvatar(
                   radius: 40,
@@ -53,7 +55,7 @@ class DoctorDetailsPage extends StatelessWidget {
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 DateCard(day: '19', weekday: 'Sat'),
@@ -75,7 +77,7 @@ class DoctorDetailsPage extends StatelessWidget {
               childAspectRatio: 2.5,
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
-              children: [
+              children: const [
                 TimeSlotCard(time: '10:00 AM'),
                 TimeSlotCard(time: '11:00 AM'),
                 TimeSlotCard(time: '12:00 PM'),
@@ -87,7 +89,14 @@ class DoctorDetailsPage extends StatelessWidget {
             Spacer(),
             Center(
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  // Navigate to the booking success page
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DoctorDetailsPage()),
+                  );
+                },
                 child: Text('DONE'),
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
@@ -95,6 +104,154 @@ class DoctorDetailsPage extends StatelessWidget {
                   ),
                   padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// DoctorDetailsPage from the previous code
+class DoctorDetailsPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text('Appoint Time'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.code),
+            onPressed: () {},
+          ),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            // Doctor's Info
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                CircleAvatar(
+                  radius: 30,
+                  backgroundImage: NetworkImage(
+                      'https://via.placeholder.com/150'), // Doctor's Image
+                ),
+                SizedBox(width: 20),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Dr. Alexa Sharma',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    Text(
+                      'Heart Specialist',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(height: 30),
+
+            // Date and Time
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                  children: [
+                    Text('DATE'),
+                    Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Text('19 Sat August'),
+                    ),
+                  ],
+                ),
+                SizedBox(width: 20),
+                Column(
+                  children: [
+                    Text('TIME'),
+                    Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Text('11:00 AM'),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(height: 50),
+
+            // Booking Confirmation
+            Container(
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: const Column(
+                children: [
+                  Icon(Icons.check_circle_outline,
+                      size: 50, color: Colors.blue),
+                  SizedBox(height: 10),
+                  Text(
+                    'BOOKING SUCCESSFUL',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    'Your Appointment Successfully Confirmed',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.grey,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 30),
+
+            // Done Button
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context); // Navigate back to the previous page
+              },
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.blue, backgroundColor: Colors.white,
+                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  side: BorderSide(color: Colors.blue),
+                ),
+              ),
+              child: Text(
+                'DONE',
+                style: TextStyle(fontSize: 16),
               ),
             ),
           ],
