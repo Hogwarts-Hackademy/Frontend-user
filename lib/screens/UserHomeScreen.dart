@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'doctor_list_screen.dart';
 import 'hospital_search_screen.dart';
+import 'Setting.dart';
+import 'SearchPage.dart';
+import 'MedicalReportScreen.dart'; // Import the medical report screen
 
 class UserHomeScreen extends StatelessWidget {
   const UserHomeScreen({super.key});
@@ -24,10 +27,10 @@ class UserHomeScreen extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      const Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             'Good Morning!\nJack',
                             style: TextStyle(
                               fontSize: 20,
@@ -36,37 +39,52 @@ class UserHomeScreen extends StatelessWidget {
                           ),
                           Row(
                             children: [
-                              CircleAvatar(
-                                backgroundImage:
-                                    AssetImage('lib/assets/images/user.png'),
-                                radius: 20,
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const SettingsPage(),
+                                    ),
+                                  );
+                                },
+                                child: const Icon(Icons.settings, size: 28),
                               ),
-                              SizedBox(width: 10),
-                              Icon(Icons.notifications, size: 28),
+                              const SizedBox(width: 10),
+                              const Icon(Icons.notifications, size: 28),
                             ],
                           ),
                         ],
                       ),
                       const SizedBox(height: 20),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 5),
-                        decoration: BoxDecoration(
-                          color: Colors.blue.shade100,
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                        child: const Row(
-                          children: [
-                            Expanded(
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  hintText: 'Search...',
-                                  border: InputBorder.none,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SearchPage(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 5),
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 255, 255, 255),
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                          child: const Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  'Search...',
+                                  style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                                 ),
                               ),
-                            ),
-                            Icon(Icons.search, size: 28),
-                          ],
+                              Icon(Icons.search, size: 28),
+                            ],
+                          ),
                         ),
                       ),
                     ],
@@ -130,6 +148,11 @@ class UserHomeScreen extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (context) => const HospitalSearchScreen()),
+          );
+        } else if (title == 'Medical Report') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => MedicalReportScreen()),
           );
         }
       },
