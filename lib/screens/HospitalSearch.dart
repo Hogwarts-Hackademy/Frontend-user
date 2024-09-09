@@ -1,20 +1,5 @@
 import 'package:flutter/material.dart';
 
-class HospitalSearch extends StatelessWidget {
-  const HospitalSearch({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Hospital Search',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HospitalListScreen(),
-    );
-  }
-}
-
 class HospitalListScreen extends StatelessWidget {
   final List<Map<String, String>> hospitals = [
     {
