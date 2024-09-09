@@ -24,7 +24,7 @@ class DoctorContactScreen extends StatelessWidget {
             color: Colors.lightBlue[100],
             child: Column(
               children: [
-                CircleAvatar(
+                const CircleAvatar(
                   radius: 40,
                   backgroundImage: AssetImage(
                       'lib/assets/images/doctor.png'), // Doctor image
@@ -32,20 +32,20 @@ class DoctorContactScreen extends StatelessWidget {
                 SizedBox(height: 10),
                 Text(
                   doctor.name, // Doctor's name
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
                   doctor.specialty, // Doctor's specialty
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     color: Colors.black54,
                   ),
                 ),
                 SizedBox(height: 5),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(Icons.star, color: Colors.yellow, size: 20),
@@ -66,7 +66,7 @@ class DoctorContactScreen extends StatelessWidget {
           // Contact Details Section
           Container(
             padding: EdgeInsets.all(20.0),
-            child: Column(
+            child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -108,18 +108,18 @@ class DoctorContactScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => DoctorDetailsPage(),
+                      builder: (context) => DoctorDetailsPage1(),
                     ),
                   );
                 },
-                child: Text(
-                  "BOOK APPOINTMENT",
-                  style: TextStyle(fontSize: 18),
-                ),
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
+                ),
+                child: const Text(
+                  "BOOK APPOINTMENT",
+                  style: TextStyle(fontSize: 18),
                 ),
               ),
             ),
