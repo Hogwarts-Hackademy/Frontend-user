@@ -7,7 +7,7 @@ class BookingStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.blue.shade100,
         title: const Text('Appoint Time'),
         actions: [
           IconButton(
