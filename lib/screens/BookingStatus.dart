@@ -28,7 +28,7 @@ class BookingStatus extends StatelessWidget {
                 CircleAvatar(
                   radius: 30,
                   backgroundImage: NetworkImage(
-                      'https://via.placeholder.com/150'), // Doctor's Image
+                      'lib/assets/images/doctor.png'), // Doctor's Image
                 ),
                 SizedBox(width: 20),
                 Column(
