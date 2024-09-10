@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'loginScreen.dart';
+// import 'loginScreen.dart';
+import 'UserHomeScreen.dart';
+
 
 class IntroScreen extends StatelessWidget {
   const IntroScreen({super.key});
@@ -53,7 +55,7 @@ class IntroScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const LoginScreen()),
+                        builder: (context) => const UserHomeScreen()),
                   );
                 },
                 backgroundColor: Colors.lightBlue,
