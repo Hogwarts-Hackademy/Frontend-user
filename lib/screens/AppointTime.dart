@@ -7,7 +7,7 @@ class AppointTime extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.blue.shade100,
         title: const Text('Appoint Time'),
         actions: [
           IconButton(
@@ -28,7 +28,7 @@ class AppointTime extends StatelessWidget {
                 CircleAvatar(
                   radius: 30,
                   backgroundImage: NetworkImage(
-                      'https://via.placeholder.com/150'), // Doctor's Image
+                      'lib/assets/images/doctor.png'), // Doctor's Image
                 ),
                 SizedBox(width: 20),
                 Column(
