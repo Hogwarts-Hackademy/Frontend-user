@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:health_sync/config/login_API.dart';
 import 'verification.dart';
-import 'loginScreen.dart';
+import 'LoginScreen.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
