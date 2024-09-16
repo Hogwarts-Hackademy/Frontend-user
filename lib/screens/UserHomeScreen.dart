@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'doctor_list_screen.dart';
-import 'hospital_search_screen.dart';
+import 'DoctorListScreen.dart';
+import 'HospitalListScreen.dart';
 import 'Setting.dart';
 import 'SearchPage.dart';
 import 'MedicalReportScreen.dart'; // Import the medical report screen
-
+import 'AmbulanceScreen.dart';
 class UserHomeScreen extends StatelessWidget {
   const UserHomeScreen({super.key});
 
@@ -22,7 +22,7 @@ class UserHomeScreen extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(15),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFF5F5F5),
+                    color: Colors.blue.shade100,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Column(
@@ -141,20 +141,29 @@ class UserHomeScreen extends StatelessWidget {
         if (title == 'Doctors') {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => DoctorListScreen()),
+            MaterialPageRoute(
+            builder: (context) => DoctorListScreen()),
           );
         } else if (title == 'Hospitals') {
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => const HospitalSearchScreen()),
+              builder: (context) => const HospitalSearchScreen()),
           );
         } else if (title == 'Medical Report') {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MedicalReportScreen()),
+            MaterialPageRoute(
+              builder: (context) => MedicalReportScreen()),
+          );
+        } else if (title == 'Ambulance') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AmbulancePage()),
           );
         }
+        
       },
       child: Card(
         elevation: 2,

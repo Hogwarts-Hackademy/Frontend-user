@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'PrescriptionDetailsPage.dart'; 
+void main() {
+  runApp(MaterialApp(
+    home: MedicalReportScreen(),
+  ));
+}
 
 class MedicalReportScreen extends StatelessWidget {
   final List<Map<String, String>> reports = [
@@ -35,7 +41,7 @@ class MedicalReportScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Medical Report'),
-        backgroundColor: Colors.purple[300],
+        backgroundColor: Colors.blue.shade100,
       ),
       body: ListView.builder(
         itemCount: reports.length,
@@ -43,7 +49,7 @@ class MedicalReportScreen extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Card(
-              color: Colors.blue[100],
+              color: const Color.fromARGB(255, 255, 255, 255),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15.0),
               ),
@@ -57,6 +63,15 @@ class MedicalReportScreen extends StatelessWidget {
                   ],
                 ),
                 trailing: Text(reports[index]['date']!),
+                // Add an onTap to navigate to the detail screen
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PrescriptionDetailsPage(),
+                    ),
+                  );
+                },
               ),
             ),
           );

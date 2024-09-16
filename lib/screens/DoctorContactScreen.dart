@@ -1,7 +1,7 @@
 // doctor_profile_screen.dart
 import 'package:flutter/material.dart';
-import 'doctor_list_screen.dart'; // Import the Doctor class
-import 'doctor_details_page.dart'; // Import the DoctorDetailsPage class
+import 'DoctorListScreen.dart'; // Import the Doctor class
+import 'DoctorDetailsScreen.dart'; // Import the DoctorDetailsPage class
 
 class DoctorContactScreen extends StatelessWidget {
   final Doctor doctor;
@@ -12,7 +12,7 @@ class DoctorContactScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.blue.shade100,
         title: const Text("DOCTOR PROFILE"),
         centerTitle: true,
       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'doctor_list_screen.dart'; // Import the DoctorListScreen
+import 'DoctorListScreen.dart'; // Import the DoctorListScreen
 
 class HospitalSearchScreen extends StatelessWidget {
   const HospitalSearchScreen({super.key});
@@ -106,6 +106,18 @@ class HospitalSearchScreen extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.phone),
+            label: 'Emergency',
+          ),
+        ],
       ),
     );
   }

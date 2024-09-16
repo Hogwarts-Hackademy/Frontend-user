@@ -15,7 +15,7 @@ class DoctorDetailsPage1 extends StatelessWidget {
         ),
         title: const Text('Doctor\'s Details',
             style: TextStyle(color: Colors.black)),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blue.shade100,
         elevation: 0,
       ),
       body: Padding(
@@ -28,7 +28,7 @@ class DoctorDetailsPage1 extends StatelessWidget {
                 CircleAvatar(
                   radius: 40,
                   backgroundImage: NetworkImage(
-                      'https://your-image-url.com'), // Doctor's image
+                      'lib/assets/images/doctor.png'), // Doctor's image
                 ),
                 SizedBox(width: 16),
                 Column(

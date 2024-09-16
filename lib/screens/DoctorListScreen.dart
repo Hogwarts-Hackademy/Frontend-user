@@ -1,6 +1,6 @@
 // doctor_list_screen.dart
 import 'package:flutter/material.dart';
-import 'doctor_contact_screen.dart'; // Import the doctor profile screen
+import 'DoctorContactScreen.dart'; // Import the doctor profile screen
 
 class Doctor {
   final String name;
@@ -24,7 +24,7 @@ class DoctorListScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Doctors'),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.blue.shade100,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -63,7 +63,7 @@ class DoctorListScreen extends StatelessWidget {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.emergency),
+            icon: Icon(Icons.phone),
             label: 'Emergency',
           ),
         ],
